@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CrazyCodes | CrazyCodes</title><meta name="author" content="CrazyCodes"><meta name="copyright" content="CrazyCodes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言MySQL服务器可以在不同的SQL模式下运行，并且可以针对不同的客户端以不同的方式应用这些模式，具体取决于sql_mode系统变量的值。DBA可以设置全局SQL模式以匹配站点服务器操作要求，并且每个应用程序可以将其会话SQL模式设置为其自己的要求。 模式会影响MySQL支持的SQL语法以及它执行的数据验证检查。这使得在不同环境中使用MySQL以及将MySQL与其他数据库服务器一起使用变得更加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrazyCodes">
+<meta property="og:url" content="http://example.com/2022/06/25/MySQL/MySQL%20SQL%E6%A8%A1%E5%BC%8F%E7%89%B9%E7%82%B9%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="CrazyCodes">
+<meta property="og:description" content="前言MySQL服务器可以在不同的SQL模式下运行，并且可以针对不同的客户端以不同的方式应用这些模式，具体取决于sql_mode系统变量的值。DBA可以设置全局SQL模式以匹配站点服务器操作要求，并且每个应用程序可以将其会话SQL模式设置为其自己的要求。 模式会影响MySQL支持的SQL语法以及它执行的数据验证检查。这使得在不同环境中使用MySQL以及将MySQL与其他数据库服务器一起使用变得更加">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg">
+<meta property="article:published_time" content="2022-06-25T14:20:51.547Z">
+<meta property="article:modified_time" content="2022-06-25T14:20:51.547Z">
+<meta property="article:author" content="CrazyCodes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg"><link rel="shortcut icon" href="https://resources.blog.fastrun.cn/wp-content/uploads/2020/05/2020050605523531.png"><link rel="canonical" href="http://example.com/2022/06/25/MySQL/MySQL%20SQL%E6%A8%A1%E5%BC%8F%E7%89%B9%E7%82%B9%E6%B1%87%E6%80%BB/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CrazyCodes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-25 22:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CrazyCodes</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-25T14:20:51.547Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-25T14:20:51.547Z" title="更新于 2022-06-25 22:20:51">2022-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://resources.blog.fastrun.cn/wp-content/uploads/2018/09/2932010282-5b978902533da_articlex.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>MySQL服务器可以在不同的SQL模式下运行，并且可以针对不同的客户端以不同的方式应用这些模式，具体取决于sql_mode系统变量的值。DBA可以设置全局SQL模式以匹配站点服务器操作要求，并且每个应用程序可以将其会话SQL模式设置为其自己的要求。</p>
+<p>模式会影响MySQL支持的SQL语法以及它执行的数据验证检查。这使得在不同环境中使用MySQL以及将MySQL与其他数据库服务器一起使用变得更加容易。</p>
+<h1 id="设置SQL模式"><a href="#设置SQL模式" class="headerlink" title="设置SQL模式"></a>设置SQL模式</h1><p>要在运行时更改SQL模式，请sql_mode使用以下SET 语句设置全局或会话 系统变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL sql_mode = &#x27;modes&#x27;;</span><br><span class="line">SET SESSION sql_mode = &#x27;modes&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="模式列表"><a href="#模式列表" class="headerlink" title="模式列表"></a>模式列表</h1><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALLOW_INVALID_DATES</td>
+<td>无效日期会生成错误</td>
+</tr>
+<tr>
+<td>ERROR_FOR_DIVISION_BY_ZERO</td>
+<td>除0错误</td>
+</tr>
+<tr>
+<td>NO_BACKSLASH_ESCAPES</td>
+<td>禁止使用反斜杠字符（\）作为字符串中的转义字符。启用此模式后，反斜杠就像其他任何一个普通字符一样。</td>
+</tr>
+<tr>
+<td>NO_UNSIGNED_SUBTRACTION</td>
+<td>在整数值之间减去（其中一个是类型） UNSIGNED，默认情况下会产生无符号结果。如果结果否则为负，则会导致错误</td>
+</tr>
+<tr>
+<td>NO_ZERO_IN_DATE</td>
+<td>‘0000-00-00’ 则允许并且插入产生警告</td>
+</tr>
+<tr>
+<td>ONLY_FULL_GROUP_BY</td>
+<td>select 内指定字段必须出现在 groupby 中，否则错误</td>
+</tr>
+<tr>
+<td>STRICT_TRANS_TABLES</td>
+<td>为事务存储引擎启用严格的SQL模式，并在可能的情况下为非事务性存储引擎启用。</td>
+</tr>
+<tr>
+<td>STRICT_ALL_TABLES</td>
+<td>为所有存储引擎启用严格SQL模式。无效的数据值被拒绝。</td>
+</tr>
+</tbody></table>
+<p>详情请参考 <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sql-mode-important">https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html#sql-mode-important</a></p>
+<h1 id="严格SQL模式"><a href="#严格SQL模式" class="headerlink" title="严格SQL模式"></a>严格SQL模式</h1><blockquote>
+<p>MySQL服务器可以在不同的SQL模式下运行，并且可以针对不同的客户端以不同的方式应用这些模式，具体取决于sql_mode系统变量的值。在严格SQL模式下，服务器会将某些警告升级为错误。</p>
+</blockquote>
+<p>严格SQL模式适用于以下语句</p>
+<ul>
+<li>ALTER TABLE</li>
+<li>CREATE TABLE</li>
+<li>CREATE TABLE … SELECT</li>
+<li>DELETE</li>
+<li>INSERT</li>
+<li>LOAD DATA</li>
+<li>LOAD XML</li>
+<li>SELECT SLEEP()</li>
+<li>UPDATE</li>
+</ul>
+<blockquote>
+<p>在存储的程序中，如果在严格模式生效时定义了程序，则列出的类型的单个语句将以严格的SQL模式执行。</p>
+</blockquote>
+<blockquote>
+<p>严格的SQL模式适用于以下错误，表示输入值无效或缺失的一类错误。如果值具有错误的列数据类型或可能超出范围，则该值无效。如果要插入的新行不包含其定义中NOT NULL没有显式DEFAULT子句的列的值，则缺少值。</p>
+</blockquote>
+<ul>
+<li>ER_BAD_NULL_ERROR</li>
+<li>ER_CUT_VALUE_GROUP_CONCAT</li>
+<li>ER_DATA_TOO_LONG</li>
+<li>ER_DATETIME_FUNCTION_OVERFLOW</li>
+<li>ER_DIVISION_BY_ZERO</li>
+<li>ER_INVALID_ARGUMENT_FOR_LOGARITHM</li>
+<li>ER_NO_DEFAULT_FOR_FIELD</li>
+<li>ER_NO_DEFAULT_FOR_VIEW_FIELD</li>
+<li>ER_TOO_LONG_KEY</li>
+<li>ER_TRUNCATED_WRONG_VALUE</li>
+<li>ER_TRUNCATED_WRONG_VALUE_FOR_FIELD</li>
+<li>ER_WARN_DATA_OUT_OF_RANGE</li>
+<li>ER_WARN_NULL_TO_NOTNULL</li>
+<li>ER_WARN_TOO_FEW_RECORDS</li>
+<li>ER_WRONG_ARGUMENTS</li>
+<li>ER_WRONG_VALUE_FOR_TYPE</li>
+<li>WARN_DATA_TRUNCATED</li>
+</ul>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢你看到这里，希望本篇文章可以帮到你，谢谢。🙏</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">CrazyCodes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/MySQL/MySQL%20SQL%E6%A8%A1%E5%BC%8F%E7%89%B9%E7%82%B9%E6%B1%87%E6%80%BB/">http://example.com/2022/06/25/MySQL/MySQL%20SQL%E6%A8%A1%E5%BC%8F%E7%89%B9%E7%82%B9%E6%B1%87%E6%80%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">CrazyCodes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/25/Laravel/%E4%BA%94%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%20Dingo%20API/"><img class="prev-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2022/06/25/MySQL/MySQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CrazyCodes</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AESQL%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">设置SQL模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%88%97%E8%A1%A8"><span class="toc-number">3.</span> <span class="toc-text">模式列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%A5%E6%A0%BCSQL%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">严格SQL模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%B4%E8%B0%A2"><span class="toc-number">5.</span> <span class="toc-text">致谢</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By CrazyCodes</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

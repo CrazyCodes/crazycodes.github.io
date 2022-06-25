@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CrazyCodes | CrazyCodes</title><meta name="author" content="CrazyCodes"><meta name="copyright" content="CrazyCodes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言上一篇的标题改了一下，以一、二、三为章节对读者来说是种困扰，现在的标题是依照项目进度来编写的。上篇文章地址为 https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000017278828 这一系列文章并不准备写太多章节，大概规划的只有4~5章左右，具体实现代码还请移步Githubhttps:&#x2F;&#x2F;github.com&#x2F;CrazyCodes&#x2F;z_framework 本章详细讲解一下Ro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrazyCodes">
+<meta property="og:url" content="http://example.com/2022/06/25/PHP/%E6%9D%A5!%E7%8B%82%E6%92%B8%E4%B8%80%E6%AC%BEPHP%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%A1%86%E6%9E%B6%20(%E8%B7%AF%E7%94%B1%E7%9A%84%E8%AE%BE%E8%AE%A1)/index.html">
+<meta property="og:site_name" content="CrazyCodes">
+<meta property="og:description" content="前言上一篇的标题改了一下，以一、二、三为章节对读者来说是种困扰，现在的标题是依照项目进度来编写的。上篇文章地址为 https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000017278828 这一系列文章并不准备写太多章节，大概规划的只有4~5章左右，具体实现代码还请移步Githubhttps:&#x2F;&#x2F;github.com&#x2F;CrazyCodes&#x2F;z_framework 本章详细讲解一下Ro">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg">
+<meta property="article:published_time" content="2022-06-25T14:20:51.553Z">
+<meta property="article:modified_time" content="2022-06-25T14:20:51.553Z">
+<meta property="article:author" content="CrazyCodes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg"><link rel="shortcut icon" href="https://resources.blog.fastrun.cn/wp-content/uploads/2020/05/2020050605523531.png"><link rel="canonical" href="http://example.com/2022/06/25/PHP/%E6%9D%A5!%E7%8B%82%E6%92%B8%E4%B8%80%E6%AC%BEPHP%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%A1%86%E6%9E%B6%20(%E8%B7%AF%E7%94%B1%E7%9A%84%E8%AE%BE%E8%AE%A1)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CrazyCodes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-25 22:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CrazyCodes</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-25T14:20:51.553Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-25T14:20:51.553Z" title="更新于 2022-06-25 22:20:51">2022-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://resources.blog.fastrun.cn/wp-content/uploads/2018/12/4149909193-5c0898e0c4a99_articlex.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇的标题改了一下，以一、二、三为章节对读者来说是种困扰，现在的标题是依照项目进度来编写的。上篇文章地址为 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017278828">https://segmentfault.com/a/1190000017278828</a></p>
+<p>这一系列文章并不准备写太多章节，大概规划的只有4~5章左右，具体实现代码还请移步Github<br><a target="_blank" rel="noopener" href="https://github.com/CrazyCodes/z_framework">https://github.com/CrazyCodes/z_framework</a></p>
+<p>本章详细讲解一下Route(路由的实现)，Come on Up Image</p>
+<p><img src="https://resources.blog.fastrun.cn/wp-content/uploads/2018/12/563696082-5c1318a81c42a_articlex.png"></p>
+<p>上图大概说明了实现路由要经过两个步骤</p>
+<ul>
+<li>将所有路由信息存储到超全局变量中</li>
+<li>用户请求时从全局变量中查找路由映射的服务脚本并实例化</li>
+</ul>
+<p>OK,大概流程就是酱紫，下面开始“撸”</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>路由的代码暂分为以下几个文件（这并不是确定的，详细可查看Github）</p>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Route</td>
+<td>转发文件:为实现 Route::get 效果</td>
+</tr>
+<tr>
+<td>RouteCollection</td>
+<td>路由信息处理存储</td>
+</tr>
+<tr>
+<td>RouteInterface</td>
+<td>无需解释</td>
+</tr>
+<tr>
+<td>RouteModel</td>
+<td>路由模型,将每个路由信息以结构体方式存储到$_SERVER</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>路由的核心类</td>
+</tr>
+</tbody></table>
+<p>莫急,我们一个一个文件来看。先从RouteInterface开始</p>
+<h1 id="RouteInterface"><a href="#RouteInterface" class="headerlink" title="RouteInterface"></a>RouteInterface</h1><p>参照RESTful规定设定接口方法分别为 GET、POST、PATCH、PUT、DELETE、OPTIONS，当然Laravel也是规范了以上标准请求。</p>
+<p>GitHub : <a target="_blank" rel="noopener" href="https://github.com/CrazyCodes/z_framework/blob/master/src/Zero/ZeroInterface.php">https://github.com/CrazyCodes/z_framework/blob/master/src/Zero/ZeroInterface.php</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">interface RouteInterface</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param      $uri</span><br><span class="line">     * @param null $action</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function get($uri, $action = null);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param      $uri</span><br><span class="line">     * @param null $action</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function post($uri, $action = null);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param      $uri</span><br><span class="line">     * @param null $action</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function patch($uri, $action = null);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param      $uri</span><br><span class="line">     * @param null $action</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function put($uri, $action = null);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param      $uri</span><br><span class="line">     * @param null $action</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function delete($uri, $action = null);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param      $uri</span><br><span class="line">     * @param null $action</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function options($uri, $action = null);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h1><p>先写一个栗子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public function get($uri, $action = null)</span><br><span class="line">&#123;</span><br><span class="line">    return $this-&gt;addRoute(&quot;GET&quot;, $uri, $action);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用户调用下方代码会指向上述方法,方法既调用addRoute方法将路由信息存储到$_SERVER中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::get(&#x27;/&#x27;,&#x27;Controller&#x27;)</span><br></pre></td></tr></table></figure>
+<p>以下为addRoute部分的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public function addRoute($methods, $uri, $action)</span><br><span class="line">&#123;</span><br><span class="line">    // 这里判断请求方式是否合规,既是否存在  GET、POST、PATCH、PUT、DELETE、OPTIONS其中之一</span><br><span class="line">    if ($this-&gt;verify($methods) == false) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 之后我们去往RouteCollection路由信息的处理类中</span><br><span class="line">    return $this-&gt;routes-&gt;add($uri, $this-&gt;createRoute($methods, $action));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="RouteCollection"><a href="#RouteCollection" class="headerlink" title="RouteCollection"></a>RouteCollection</h1><p>最终达到 add 方法，将路由信息存储到$_SERVER中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public function add($uri, RouteModel $model)</span><br><span class="line">&#123;</span><br><span class="line">    if (empty($_SERVER[&quot;routes&quot;][$uri])) &#123;</span><br><span class="line">        $_SERVER[&quot;routes&quot;][$uri] = $model;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二个参数RouteModel开始我们说过这是路由模型,将每个路由以结构体的方式存储到变量中,存储后的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#x27;routes&#x27; =&gt;</span><br><span class="line">  array(6) &#123;</span><br><span class="line">    &#x27;test/get&#x27; =&gt;</span><br><span class="line">    class Zero\Routing\RouteModel#13 (2) &#123;</span><br><span class="line">      public $method =&gt;</span><br><span class="line">      string(3) &quot;GET&quot;</span><br><span class="line">      public $action =&gt;</span><br><span class="line">      string(19) &quot;testController@test&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x27;test/post&#x27; =&gt;</span><br><span class="line">    class Zero\Routing\RouteModel#14 (2) &#123;</span><br><span class="line">      public $method =&gt;</span><br><span class="line">      string(4) &quot;POST&quot;</span><br><span class="line">      public $action =&gt;</span><br><span class="line">      string(19) &quot;testController@test&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x27;test/put&#x27; =&gt;</span><br><span class="line">    class Zero\Routing\RouteModel#15 (2) &#123;</span><br><span class="line">      public $method =&gt;</span><br><span class="line">      string(3) &quot;PUT&quot;</span><br><span class="line">      public $action =&gt;</span><br><span class="line">      string(18) &quot;testController@put&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x27;test/del&#x27; =&gt;</span><br><span class="line">    class Zero\Routing\RouteModel#16 (2) &#123;</span><br><span class="line">      public $method =&gt;</span><br><span class="line">      string(6) &quot;DELETE&quot;</span><br><span class="line">      public $action =&gt;</span><br><span class="line">      string(18) &quot;testController@del&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x27;test/patch&#x27; =&gt;</span><br><span class="line">    class Zero\Routing\RouteModel#17 (2) &#123;</span><br><span class="line">      public $method =&gt;</span><br><span class="line">      string(5) &quot;PATCH&quot;</span><br><span class="line">      public $action =&gt;</span><br><span class="line">      string(20) &quot;testController@patch&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x27;test/opt&#x27; =&gt;</span><br><span class="line">    class Zero\Routing\RouteModel#18 (2) &#123;</span><br><span class="line">      public $method =&gt;</span><br><span class="line">      string(7) &quot;OPTIONS&quot;</span><br><span class="line">      public $action =&gt;</span><br><span class="line">      string(18) &quot;testController@opt&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h1><p>最后通过__callStatic将代码重定向到核心类中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static function __callStatic($name, $arguments)</span><br><span class="line">&#123;</span><br><span class="line">    $router = new Router;</span><br><span class="line">    </span><br><span class="line">    return $router-&gt;&#123;$name&#125;($arguments[0], $arguments[1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述套路部分是Laravel的设计思想，通过这款简单的框架可对Laravel核心设计有丁点的理解。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>测试上次做的有点糙，从本章到系列结束，我们都以PHPunit来测试。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @content tests all methods storage -&gt; $_SERVER[&quot;routes&quot;]</span><br><span class="line"> */</span><br><span class="line">public function testAllMethodsStorage()</span><br><span class="line">&#123;</span><br><span class="line">    $this-&gt;routes-&gt;get($methodGet = &quot;test/get&quot;, &quot;testController@test&quot;);</span><br><span class="line">    $this-&gt;assertArrayHasKey($methodGet, $_SERVER[$this-&gt;methodsDataKey]);</span><br><span class="line">    </span><br><span class="line">    $this-&gt;routes-&gt;post($methodPost = &quot;test/post&quot;, &quot;testController@test&quot;);</span><br><span class="line">    $this-&gt;assertArrayHasKey($methodPost, $_SERVER[$this-&gt;methodsDataKey]);</span><br><span class="line">    </span><br><span class="line">    $this-&gt;routes-&gt;put($methodPut = &quot;test/put&quot;, &quot;testController@put&quot;);</span><br><span class="line">    $this-&gt;assertArrayHasKey($methodPut, $_SERVER[$this-&gt;methodsDataKey]);</span><br><span class="line">    </span><br><span class="line">    $this-&gt;routes-&gt;delete($methodDel = &quot;test/del&quot;, &quot;testController@del&quot;);</span><br><span class="line">    $this-&gt;assertArrayHasKey($methodDel, $_SERVER[$this-&gt;methodsDataKey]);</span><br><span class="line">    </span><br><span class="line">    $this-&gt;routes-&gt;patch($methodPatch = &quot;test/patch&quot;, &quot;testController@patch&quot;);</span><br><span class="line">    $this-&gt;assertArrayHasKey($methodPatch, $_SERVER[$this-&gt;methodsDataKey]);</span><br><span class="line">    </span><br><span class="line">    $this-&gt;routes-&gt;options($methodOpt = &quot;test/opt&quot;, &quot;testController@opt&quot;);</span><br><span class="line">    $this-&gt;assertArrayHasKey($methodOpt, $_SERVER[$this-&gt;methodsDataKey]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述贴出部分代码，以过程化的方法去测试。查看存储是否符合预期。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @content RouteModel Success</span><br><span class="line"> */</span><br><span class="line">public function testCreateRoute()</span><br><span class="line">&#123;</span><br><span class="line">    $response = $this-&gt;routes-&gt;createRoute(&quot;GET&quot;, &quot;TestController@Get&quot;);</span><br><span class="line">    </span><br><span class="line">    $this-&gt;assertInstanceOf(RouteModel::class, $response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>包括测试对路由创建后是否为RouteModel的实现。具体可查看Github<br><a target="_blank" rel="noopener" href="https://github.com/CrazyCodes/z_framework/tree/master/tests/Routing">https://github.com/CrazyCodes/z_framework/tree/master/tests/Routing</a></p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>上述已完成了路由的基本设计，下一章将讲解从启动到请求路由映射到服务脚本的过程。</p>
+<p>希望本章可以帮到你，谢谢。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">CrazyCodes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/PHP/%E6%9D%A5!%E7%8B%82%E6%92%B8%E4%B8%80%E6%AC%BEPHP%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%A1%86%E6%9E%B6%20(%E8%B7%AF%E7%94%B1%E7%9A%84%E8%AE%BE%E8%AE%A1)/">http://example.com/2022/06/25/PHP/%E6%9D%A5!%E7%8B%82%E6%92%B8%E4%B8%80%E6%AC%BEPHP%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%A1%86%E6%9E%B6%20(%E8%B7%AF%E7%94%B1%E7%9A%84%E8%AE%BE%E8%AE%A1)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">CrazyCodes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/25/PHP/%E6%9D%A5!%E7%8B%82%E6%92%B8%E4%B8%80%E6%AC%BEPHP%E7%8E%B0%E4%BB%A3%E5%8C%96%E6%A1%86%E6%9E%B6%20(%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C)/"><img class="prev-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2022/06/25/PHP/%E8%80%81%E9%A1%B9%E7%9B%AE%E7%9A%84%E8%BF%81%E7%A7%BB%E6%89%8B%E8%AE%B0/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CrazyCodes</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">2.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RouteInterface"><span class="toc-number">3.</span> <span class="toc-text">RouteInterface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Router"><span class="toc-number">4.</span> <span class="toc-text">Router</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RouteCollection"><span class="toc-number">5.</span> <span class="toc-text">RouteCollection</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Route"><span class="toc-number">6.</span> <span class="toc-text">Route</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">7.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%B4%E8%B0%A2"><span class="toc-number">8.</span> <span class="toc-text">致谢</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By CrazyCodes</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

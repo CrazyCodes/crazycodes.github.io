@@ -1,0 +1,391 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CrazyCodes | CrazyCodes</title><meta name="author" content="CrazyCodes"><meta name="copyright" content="CrazyCodes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言我应该是少数在文章中直接展示接口文档的人。本篇我思考了很久到底要不要解析下商品接口开发的注意点。 客户端开发与服务端开发即是天敌也是兄弟。希望本篇文章让你们减少争执，把“爱”给对方。 接口设计简述电商系统设计之中，比较复杂的接口就论商品详情的接口了，响应参数特别多，特别杂。在开发获取商品详情接口时要遵循以下几个原则  返回的JSON嵌套数量要少 方便去查询到指定的SKU 其他接口相关规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrazyCodes">
+<meta property="og:url" content="http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%E6%8E%A5%E5%8F%A3/index.html">
+<meta property="og:site_name" content="CrazyCodes">
+<meta property="og:description" content="前言我应该是少数在文章中直接展示接口文档的人。本篇我思考了很久到底要不要解析下商品接口开发的注意点。 客户端开发与服务端开发即是天敌也是兄弟。希望本篇文章让你们减少争执，把“爱”给对方。 接口设计简述电商系统设计之中，比较复杂的接口就论商品详情的接口了，响应参数特别多，特别杂。在开发获取商品详情接口时要遵循以下几个原则  返回的JSON嵌套数量要少 方便去查询到指定的SKU 其他接口相关规范">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg">
+<meta property="article:published_time" content="2022-06-25T14:20:51.555Z">
+<meta property="article:modified_time" content="2022-06-25T14:20:51.555Z">
+<meta property="article:author" content="CrazyCodes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg"><link rel="shortcut icon" href="https://resources.blog.fastrun.cn/wp-content/uploads/2020/05/2020050605523531.png"><link rel="canonical" href="http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%E6%8E%A5%E5%8F%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CrazyCodes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-25 22:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CrazyCodes</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-25T14:20:51.555Z" title="更新于 2022-06-25 22:20:51">2022-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/08/877827781-5b62da5520aab_articlex.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我应该是少数在文章中直接展示接口文档的人。本篇我思考了很久到底要不要解析下商品接口开发的注意点。</p>
+<p>客户端开发与服务端开发即是天敌也是兄弟。希望本篇文章让你们减少争执，把“爱”给对方。</p>
+<h1 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>电商系统设计之中，比较复杂的接口就论商品详情的接口了，响应参数特别多，特别杂。在开发获取商品详情接口时要遵循以下几个原则</p>
+<ul>
+<li>返回的JSON嵌套数量要少</li>
+<li>方便去查询到指定的SKU</li>
+<li>其他接口相关规范</li>
+</ul>
+<p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/08/1556964048-5b62d7a7324ca_articlex.png"></p>
+<h2 id="查询SKU"><a href="#查询SKU" class="headerlink" title="查询SKU"></a>查询SKU</h2><p>关于查询SKU，我让我的小伙伴是这样做的，首先拿出规格和属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&quot;选择颜色&quot;: [</span><br><span class="line">   &#123;</span><br><span class="line">          &quot;name&quot;: &quot;银色&quot;,</span><br><span class="line">          &quot;id&quot;: 75</span><br><span class="line">   &#125;</span><br><span class="line">],</span><br><span class="line">&quot;选择版本&quot;: [</span><br><span class="line">   &#123;</span><br><span class="line">          &quot;name&quot;: &quot;公开版&quot;,</span><br><span class="line">          &quot;id&quot;: 77</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">          &quot;name&quot;: &quot;【原厂延保版】&quot;,</span><br><span class="line">          &quot;id&quot;: 78</span><br><span class="line">   &#125;  </span><br><span class="line">],</span><br><span class="line">&quot;内存&quot;: [</span><br><span class="line">   &#123;</span><br><span class="line">          &quot;name&quot;: &quot;64G&quot;,</span><br><span class="line">          &quot;id&quot;: 82</span><br><span class="line">   &#125;,</span><br><span class="line">   &#123;</span><br><span class="line">          &quot;name&quot;: &quot;256G&quot;,</span><br><span class="line">          &quot;id&quot;: 83</span><br><span class="line">   &#125;</span><br><span class="line">],</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+<p>没错，你没有看错，实际就是将规格作为key，属性作为value。将value[id]取出，进行拼接即可查询到对应的SKU了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">响应参数[规格名称][属性编码] = 拼接SKU串的必需品</span><br></pre></td></tr></table></figure>
+<p>规格相当于一个分组，属性其实也是拼接SKU的重要组成部分,上述数据为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">75_77_82 = 银色,公开版,64G</span><br></pre></td></tr></table></figure>
+
+<h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><h2 id="请求地址"><a href="#请求地址" class="headerlink" title="请求地址"></a>请求地址</h2><p><code>/v1/product/&#123;productId&#125;</code></p>
+<h2 id="请求类型"><a href="#请求类型" class="headerlink" title="请求类型"></a>请求类型</h2><p><code>GET</code></p>
+<h2 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>productId</td>
+<td>int</td>
+<td>0</td>
+<td>商品编码</td>
+</tr>
+</tbody></table>
+<h2 id="响应示例"><a href="#响应示例" class="headerlink" title="响应示例"></a>响应示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 200,</span><br><span class="line">  &quot;message&quot;: &quot;获取成功&quot;,</span><br><span class="line">  &quot;data&quot;: &#123;</span><br><span class="line">    &quot;id&quot;: 131,</span><br><span class="line">    &quot;name&quot;: &quot;Apple iPhone X (A1865) 64GB 深空灰色 移动联通电信4G手机&quot;,</span><br><span class="line">    &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">    &quot;market_price&quot;: &quot;8388.00&quot;,</span><br><span class="line">    &quot;sketch&quot;: &quot;IPhone大法好，打九折，打九折，快剁手&quot;,</span><br><span class="line">    &quot;intro&quot;: &quot;这是商品描述&quot;,</span><br><span class="line">    &quot;keywords&quot;:[&#x27;苹果&#x27;,&#x27;iphone&#x27;],</span><br><span class="line">    &quot;attribute&quot;: &#123;</span><br><span class="line">      &quot;选择颜色&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;银色&quot;,</span><br><span class="line">          &quot;id&quot;: 75</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;深空灰色&quot;,</span><br><span class="line">          &quot;id&quot;: 76</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;选择版本&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;公开版&quot;,</span><br><span class="line">          &quot;id&quot;: 77</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;【原厂延保版】&quot;,</span><br><span class="line">          &quot;id&quot;: 78</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;双网通版&quot;,</span><br><span class="line">          &quot;id&quot;: 79</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;无线充套装&quot;,</span><br><span class="line">          &quot;id&quot;: 80</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;Airpods套装&quot;,</span><br><span class="line">          &quot;id&quot;: 81</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;内存&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;64G&quot;,</span><br><span class="line">          &quot;id&quot;: 82</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;256G&quot;,</span><br><span class="line">          &quot;id&quot;: 83</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;购买方式&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;官方标配&quot;,</span><br><span class="line">          &quot;id&quot;: 84</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;移动优惠购&quot;,</span><br><span class="line">          &quot;id&quot;: 85</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;电信优惠购&quot;,</span><br><span class="line">          &quot;id&quot;: 86</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;name&quot;: &quot;联通优惠购&quot;,</span><br><span class="line">          &quot;id&quot;: 87</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;album&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;: 2,</span><br><span class="line">        &quot;name&quot;: &quot;这是第一张图片&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;http://xxx.com/59ec33eaN6ddb0c54.jpg&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;: 3,</span><br><span class="line">        &quot;name&quot;: &quot;这是第二张图片&quot;,</span><br><span class="line">        &quot;url&quot;: &quot;http://xxx.com/59ec3400Nce4cc116.jpg&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;radio&quot;: &#123;</span><br><span class="line">      &quot;id&quot;: 1,</span><br><span class="line">      &quot;name&quot;: &quot;这是一个视频&quot;,</span><br><span class="line">      &quot;url&quot;: &quot;http://xxx.com/1.mp4&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;sku&quot;: &#123;</span><br><span class="line">      &quot;75_77_82_84&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: 1018,</span><br><span class="line">        &quot;name&quot;: &quot;选择颜色:银色;选择版本:公开版;内存:64G;购买方式:官方标配;&quot;,</span><br><span class="line">        &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">        &quot;stock&quot;: 83888388</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;75_77_82_85&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: 1019,</span><br><span class="line">        &quot;name&quot;: &quot;选择颜色:银色;选择版本:公开版;内存:64G;购买方式:移动优惠购;&quot;,</span><br><span class="line">        &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">        &quot;stock&quot;: 83888388</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;75_77_82_86&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: 1020,</span><br><span class="line">        &quot;name&quot;: &quot;选择颜色:银色;选择版本:公开版;内存:64G;购买方式:电信优惠购;&quot;,</span><br><span class="line">        &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">        &quot;stock&quot;: 83888388</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;75_77_82_87&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: 1021,</span><br><span class="line">        &quot;name&quot;: &quot;选择颜色:银色;选择版本:公开版;内存:64G;购买方式:联通优惠购;&quot;,</span><br><span class="line">        &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">        &quot;stock&quot;: 83888388</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;75_77_83_84&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: 1022,</span><br><span class="line">        &quot;name&quot;: &quot;选择颜色:银色;选择版本:公开版;内存:256G;购买方式:官方标配;&quot;,</span><br><span class="line">        &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">        &quot;stock&quot;: 83888388</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;75_77_83_85&quot;: &#123;</span><br><span class="line">        &quot;id&quot;: 1023,</span><br><span class="line">        &quot;name&quot;: &quot;选择颜色:银色;选择版本:公开版;内存:256G;购买方式:移动优惠购;&quot;,</span><br><span class="line">        &quot;price&quot;: &quot;8388.00&quot;,</span><br><span class="line">        &quot;stock&quot;: 83888388</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="响应参数说明"><a href="#响应参数说明" class="headerlink" title="响应参数说明"></a>响应参数说明</h2><h3 id="核心参数"><a href="#核心参数" class="headerlink" title="核心参数"></a>核心参数</h3><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">商品编码</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">商品标题</td>
+</tr>
+<tr>
+<td align="left">price</td>
+<td align="left">double</td>
+<td align="left">00.00</td>
+<td align="left">商品价格</td>
+</tr>
+<tr>
+<td align="left">keywords</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">商品关键字</td>
+</tr>
+<tr>
+<td align="left">market_price</td>
+<td align="left">double</td>
+<td align="left">00.00</td>
+<td align="left">市场价格</td>
+</tr>
+<tr>
+<td align="left">virtual</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">虚拟销量</td>
+</tr>
+<tr>
+<td align="left">sketch</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">商品简述</td>
+</tr>
+<tr>
+<td align="left">intro</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">商品详情</td>
+</tr>
+</tbody></table>
+<h3 id="商品图参数"><a href="#商品图参数" class="headerlink" title="商品图参数"></a>商品图参数</h3><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">album[]</td>
+<td align="left">array</td>
+<td align="left">[]</td>
+<td align="left">商品轮播图</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">资源编码</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">图片名称</td>
+</tr>
+<tr>
+<td align="left">url</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">资源路径</td>
+</tr>
+</tbody></table>
+<h3 id="商品视频参数"><a href="#商品视频参数" class="headerlink" title="商品视频参数"></a>商品视频参数</h3><blockquote>
+<p>无视频则返回 []</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">radio[]</td>
+<td align="left">array</td>
+<td align="left">[]</td>
+<td align="left">商品视频</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">资源编码</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">视频名称</td>
+</tr>
+<tr>
+<td align="left">url</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">资源路径</td>
+</tr>
+</tbody></table>
+<h3 id="商品规格-x2F-属性参数"><a href="#商品规格-x2F-属性参数" class="headerlink" title="商品规格&#x2F;属性参数"></a>商品规格&#x2F;属性参数</h3><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">attribute</td>
+<td align="left">array[]</td>
+<td align="left">[]</td>
+<td align="left">商品属性</td>
+</tr>
+<tr>
+<td align="left">[(attr_name)] []</td>
+<td align="left">array[]</td>
+<td align="left">[]</td>
+<td align="left">属性名称</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">属性项名称</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">属性项编码</td>
+</tr>
+</tbody></table>
+<h3 id="商品SKU参数"><a href="#商品SKU参数" class="headerlink" title="商品SKU参数"></a>商品SKU参数</h3><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sku[]</td>
+<td align="left">array[]</td>
+<td align="left">[]</td>
+<td align="left">商品sku</td>
+</tr>
+<tr>
+<td align="left">[(option_id)] []</td>
+<td align="left">array[]</td>
+<td align="left"></td>
+<td align="left">商品SKU查询办法为 attribute[(attr_name)][‘id’] 拼接</td>
+</tr>
+<tr>
+<td align="left">id</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">sku编码</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">string</td>
+<td align="left">-</td>
+<td align="left">sku 名称</td>
+</tr>
+<tr>
+<td align="left">price</td>
+<td align="left">double</td>
+<td align="left">00.00</td>
+<td align="left">商品价格</td>
+</tr>
+<tr>
+<td align="left">stock</td>
+<td align="left">int</td>
+<td align="left">0</td>
+<td align="left">商品库存</td>
+</tr>
+</tbody></table>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>字不在多，讲清楚就行，感谢你看到这里，希望本篇文章可以帮助到你，有疑问可以在评论区讨论，谢谢。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">CrazyCodes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%E6%8E%A5%E5%8F%A3/">http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%E6%8E%A5%E5%8F%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">CrazyCodes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%5B%E7%95%AA%E5%A4%96%E7%AF%87%5D/"><img class="prev-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2022/06/25/Shop/%5B%E8%BF%98%E9%AD%82%E7%AF%87%5D%20%E5%88%9D%E6%9D%A5%E4%B9%8D%E5%88%B0%E5%A6%82%E4%BD%95%E8%87%B4%E4%BA%BA%E4%BA%8E%E6%AD%BB%E5%9C%B0/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CrazyCodes</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">接口设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2SKU"><span class="toc-number">2.2.</span> <span class="toc-text">查询SKU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="toc-number">3.</span> <span class="toc-text">接口文档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">请求地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">请求类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.4.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">3.5.</span> <span class="toc-text">响应参数说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-number">3.5.1.</span> <span class="toc-text">核心参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%86%E5%93%81%E5%9B%BE%E5%8F%82%E6%95%B0"><span class="toc-number">3.5.2.</span> <span class="toc-text">商品图参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%86%E5%93%81%E8%A7%86%E9%A2%91%E5%8F%82%E6%95%B0"><span class="toc-number">3.5.3.</span> <span class="toc-text">商品视频参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%86%E5%93%81%E8%A7%84%E6%A0%BC-x2F-%E5%B1%9E%E6%80%A7%E5%8F%82%E6%95%B0"><span class="toc-number">3.5.4.</span> <span class="toc-text">商品规格&#x2F;属性参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%86%E5%93%81SKU%E5%8F%82%E6%95%B0"><span class="toc-number">3.5.5.</span> <span class="toc-text">商品SKU参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%B4%E8%B0%A2"><span class="toc-number">4.</span> <span class="toc-text">致谢</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By CrazyCodes</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

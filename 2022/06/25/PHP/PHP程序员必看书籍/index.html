@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CrazyCodes | CrazyCodes</title><meta name="author" content="CrazyCodes"><meta name="copyright" content="CrazyCodes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="以下都是我看过都书籍，无论是新手或中级别的工程师，我可以保证内容质量，大佬可跳过  概述知识无价,还是建议各位童鞋把更多的资金投入到学习中。书名排名不分前后 《PHP7内核剖析》 深入理解PHP最佳良品 https:&#x2F;&#x2F;item.jd.com&#x2F;20376348917.html 《鸟哥的Linux私房菜》 PHP码农最爱的LINUX入门书籍https:&#x2F;&#x2F;item.jd.com&#x2F;155195140">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrazyCodes">
+<meta property="og:url" content="http://example.com/2022/06/25/PHP/PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E7%9C%8B%E4%B9%A6%E7%B1%8D/index.html">
+<meta property="og:site_name" content="CrazyCodes">
+<meta property="og:description" content="以下都是我看过都书籍，无论是新手或中级别的工程师，我可以保证内容质量，大佬可跳过  概述知识无价,还是建议各位童鞋把更多的资金投入到学习中。书名排名不分前后 《PHP7内核剖析》 深入理解PHP最佳良品 https:&#x2F;&#x2F;item.jd.com&#x2F;20376348917.html 《鸟哥的Linux私房菜》 PHP码农最爱的LINUX入门书籍https:&#x2F;&#x2F;item.jd.com&#x2F;155195140">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg">
+<meta property="article:published_time" content="2022-06-25T14:20:51.550Z">
+<meta property="article:modified_time" content="2022-06-25T14:20:51.550Z">
+<meta property="article:author" content="CrazyCodes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg"><link rel="shortcut icon" href="https://resources.blog.fastrun.cn/wp-content/uploads/2020/05/2020050605523531.png"><link rel="canonical" href="http://example.com/2022/06/25/PHP/PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E7%9C%8B%E4%B9%A6%E7%B1%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CrazyCodes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-25 22:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CrazyCodes</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-25T14:20:51.550Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-25T14:20:51.550Z" title="更新于 2022-06-25 22:20:51">2022-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>以下都是我看过都书籍，无论是新手或中级别的工程师，我可以保证内容质量，大佬可跳过</p>
+</blockquote>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>知识无价,还是建议各位童鞋把更多的资金投入到学习中。书名排名不分前后</p>
+<h1 id="《PHP7内核剖析》"><a href="#《PHP7内核剖析》" class="headerlink" title="《PHP7内核剖析》"></a>《PHP7内核剖析》</h1><p><img src="http://img12.360buyimg.com/n1/jfs/t12220/48/766919717/65562/3d5e3839/5a1345caN378a157e.jpg"></p>
+<p>深入理解PHP最佳良品</p>
+<p><a target="_blank" rel="noopener" href="https://item.jd.com/20376348917.html">https://item.jd.com/20376348917.html</a></p>
+<h1 id="《鸟哥的Linux私房菜》"><a href="#《鸟哥的Linux私房菜》" class="headerlink" title="《鸟哥的Linux私房菜》"></a>《鸟哥的Linux私房菜》</h1><p><img src="http://img11.360buyimg.com/n1/jfs/t1426/247/655452016/50976/82aa3e3b/55a37630N0987163e.jpg"></p>
+<p>PHP码农最爱的LINUX入门书籍<br><a target="_blank" rel="noopener" href="https://item.jd.com/1551951406.html">https://item.jd.com/1551951406.html</a></p>
+<h1 id="《Modern-PHP-中文版-》"><a href="#《Modern-PHP-中文版-》" class="headerlink" title="《Modern PHP (中文版)》"></a>《Modern PHP (中文版)》</h1><p><img src="http://img10.360buyimg.com/n1/jfs/t2857/50/3653206891/53172/976128ed/57967f83N4093a2e9.jpg"></p>
+<p>学习(新)PHP的好书<br><a target="_blank" rel="noopener" href="https://item.jd.com/10006210180.html">https://item.jd.com/10006210180.html</a></p>
+<h1 id="《Learning-PHP设计模式》"><a href="#《Learning-PHP设计模式》" class="headerlink" title="《Learning PHP设计模式》"></a>《Learning PHP设计模式》</h1><p><img src="http://img11.360buyimg.com/n1/jfs/t2311/144/2874325550/385815/ca5a3576/56f1f95aN0891de67.jpg"></p>
+<p>不会设计模式，你跟我说你是程序员？<br><a target="_blank" rel="noopener" href="https://item.jd.com/11421261.html">https://item.jd.com/11421261.html</a></p>
+<h1 id="《细说PHP》"><a href="#《细说PHP》" class="headerlink" title="《细说PHP》"></a>《细说PHP》</h1><p><img src="http://img10.360buyimg.com/n1/g16/M00/05/1E/rBEbRVN0NJkIAAAAAACLgJl7urEAABKMgBCpGkAAIuY581.jpg"></p>
+<p>这是我入门PHP的时候看的一本书,内容虽然有些摘抄，但知识点概括的很全<br><a target="_blank" rel="noopener" href="https://item.jd.com/1153543995.html">https://item.jd.com/1153543995.html</a></p>
+<h1 id="《高性能PHP-7》"><a href="#《高性能PHP-7》" class="headerlink" title="《高性能PHP 7》"></a>《高性能PHP 7》</h1><p><img src="http://img13.360buyimg.com/n1/jfs/t4240/243/111876574/210482/55eefb98/58af818bN9047cc48.jpg"></p>
+<p>PHP全球开发者大会上推荐的一本书，感觉内容很前卫、新鲜。吕毅大佬翻译的<br><a target="_blank" rel="noopener" href="https://item.jd.com/12134218.html">https://item.jd.com/12134218.html</a></p>
+<h1 id="《Docker技术入门与实战》"><a href="#《Docker技术入门与实战》" class="headerlink" title="《Docker技术入门与实战》"></a>《Docker技术入门与实战》</h1><p><img src="http://img13.360buyimg.com/n1/jfs/t3976/60/1843619530/173929/98382b07/589987a1N224ae4fc.jpg"></p>
+<p>你确定你不了解下Docker ?<br><a target="_blank" rel="noopener" href="https://item.jd.com/12121728.html">https://item.jd.com/12121728.html</a></p>
+<h1 id="《疯狂JAVA讲义》"><a href="#《疯狂JAVA讲义》" class="headerlink" title="《疯狂JAVA讲义》"></a>《疯狂JAVA讲义》</h1><p><img src="http://img12.360buyimg.com/n1/jfs/t14623/132/1628289998/267588/2d3f3c18/5a542169N44a421a4.jpg"></p>
+<p>其实Java应该在PHP开发者的必会名单内<br><a target="_blank" rel="noopener" href="https://item.jd.com/12261787.html">https://item.jd.com/12261787.html</a></p>
+<h1 id="《Redis入门指南-第2版-》"><a href="#《Redis入门指南-第2版-》" class="headerlink" title="《Redis入门指南(第2版)》"></a>《Redis入门指南(第2版)》</h1><p><img src="http://img14.360buyimg.com/n1/jfs/t1006/327/832175681/385238/4f6b866e/554ada9aN2d862d58.jpg"></p>
+<p>nosql 了解一下？<br><a target="_blank" rel="noopener" href="https://item.jd.com/11685574.html">https://item.jd.com/11685574.html</a></p>
+<h1 id="《算法谜题》"><a href="#《算法谜题》" class="headerlink" title="《算法谜题》"></a>《算法谜题》</h1><p><img src="http://img11.360buyimg.com/n1/g15/M01/0A/1C/rBEhWlMZNJYIAAAAAAHZUBcddIYAAJlZAPAgnAAAdlo461.jpg"></p>
+<p>代码敲累了？来～换换脑子<br><a target="_blank" rel="noopener" href="https://item.jd.com/11412901.html">https://item.jd.com/11412901.html</a></p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢各位看完本篇白话文，最近几天一直在写相当于过往经历一样的文章，并不是不去创造新的内容，而是我更希望把我所知道的，我做过的，告诉大伙，好的地方可借鉴，差的地方可预防。我也不是一个大佬。互相学习把。谢谢</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">CrazyCodes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/PHP/PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E7%9C%8B%E4%B9%A6%E7%B1%8D/">http://example.com/2022/06/25/PHP/PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E7%9C%8B%E4%B9%A6%E7%B1%8D/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">CrazyCodes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/25/PHP/PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7/"><img class="prev-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2022/06/25/PHP/2019%20PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CrazyCodes</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8APHP7%E5%86%85%E6%A0%B8%E5%89%96%E6%9E%90%E3%80%8B"><span class="toc-number">2.</span> <span class="toc-text">《PHP7内核剖析》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E3%80%8B"><span class="toc-number">3.</span> <span class="toc-text">《鸟哥的Linux私房菜》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8AModern-PHP-%E4%B8%AD%E6%96%87%E7%89%88-%E3%80%8B"><span class="toc-number">4.</span> <span class="toc-text">《Modern PHP (中文版)》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8ALearning-PHP%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8B"><span class="toc-number">5.</span> <span class="toc-text">《Learning PHP设计模式》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E7%BB%86%E8%AF%B4PHP%E3%80%8B"><span class="toc-number">6.</span> <span class="toc-text">《细说PHP》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E9%AB%98%E6%80%A7%E8%83%BDPHP-7%E3%80%8B"><span class="toc-number">7.</span> <span class="toc-text">《高性能PHP 7》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8ADocker%E6%8A%80%E6%9C%AF%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98%E3%80%8B"><span class="toc-number">8.</span> <span class="toc-text">《Docker技术入门与实战》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E7%96%AF%E7%8B%82JAVA%E8%AE%B2%E4%B9%89%E3%80%8B"><span class="toc-number">9.</span> <span class="toc-text">《疯狂JAVA讲义》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8ARedis%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97-%E7%AC%AC2%E7%89%88-%E3%80%8B"><span class="toc-number">10.</span> <span class="toc-text">《Redis入门指南(第2版)》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8A%E7%AE%97%E6%B3%95%E8%B0%9C%E9%A2%98%E3%80%8B"><span class="toc-number">11.</span> <span class="toc-text">《算法谜题》</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%B4%E8%B0%A2"><span class="toc-number">12.</span> <span class="toc-text">致谢</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By CrazyCodes</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

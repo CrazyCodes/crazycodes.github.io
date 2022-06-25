@@ -1,0 +1,493 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CrazyCodes | CrazyCodes</title><meta name="author" content="CrazyCodes"><meta name="copyright" content="CrazyCodes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言任何一个工具都有它的灵魂所在,作为一个PHP程序员，我们可能仅仅使用了它的一小部分，这篇文章让你更加了解Nginx，本章大多都是总结、翻译、整理 ，希望你可以知道nginx不仅仅是PHP的附属品，更宏观的认识它的强大。 变量内置变量存放在  ngx_http_core_module 模块中，变量的命名方式和apache 服务器变量是一致的。总而言之，这些变量代表着客户端请求头的内容，例如$h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrazyCodes">
+<meta property="og:url" content="http://example.com/2022/06/25/Nginx/NGINX%E5%AE%8F%E8%A7%82%E6%89%8B%E8%AE%B0/index.html">
+<meta property="og:site_name" content="CrazyCodes">
+<meta property="og:description" content="前言任何一个工具都有它的灵魂所在,作为一个PHP程序员，我们可能仅仅使用了它的一小部分，这篇文章让你更加了解Nginx，本章大多都是总结、翻译、整理 ，希望你可以知道nginx不仅仅是PHP的附属品，更宏观的认识它的强大。 变量内置变量存放在  ngx_http_core_module 模块中，变量的命名方式和apache 服务器变量是一致的。总而言之，这些变量代表着客户端请求头的内容，例如$h">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg">
+<meta property="article:published_time" content="2022-06-25T14:20:51.548Z">
+<meta property="article:modified_time" content="2022-06-25T14:20:51.548Z">
+<meta property="article:author" content="CrazyCodes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg"><link rel="shortcut icon" href="https://resources.blog.fastrun.cn/wp-content/uploads/2020/05/2020050605523531.png"><link rel="canonical" href="http://example.com/2022/06/25/Nginx/NGINX%E5%AE%8F%E8%A7%82%E6%89%8B%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CrazyCodes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-25 22:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CrazyCodes</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-25T14:20:51.548Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-25T14:20:51.548Z" title="更新于 2022-06-25 22:20:51">2022-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/08/492087479-5b607aa4ba2a4_articlex.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>任何一个工具都有它的灵魂所在,作为一个PHP程序员，我们可能仅仅使用了它的一小部分，这篇文章让你更加了解Nginx，本章大多都是总结、翻译、整理 ，希望你可以知道nginx不仅仅是PHP的附属品，更宏观的认识它的强大。</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>内置变量存放在  ngx_http_core_module 模块中，变量的命名方式和apache 服务器变量是一致的。总而言之，这些变量代表着客户端请求头的内容，例如$http_user_agent, $http_cookie, 等等。下面是nginx支持的所有内置变量</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$arg_name</td>
+<td>请求中的的参数名，即“?”后面的arg_name&#x3D;arg_value形式的arg_name</td>
+</tr>
+<tr>
+<td>$args</td>
+<td>请求中的参数值</td>
+</tr>
+<tr>
+<td>$binary_remote_addr</td>
+<td>客户端地址的二进制形式, 固定长度为4个字节</td>
+</tr>
+<tr>
+<td>$body_bytes_sent</td>
+<td>传输给客户端的字节数，响应头不计算在内；这个变量和Apache的mod_log_config模块中的“%B”参数保持兼容</td>
+</tr>
+<tr>
+<td>$bytes_sent</td>
+<td>传输给客户端的字节数 (1.3.8, 1.2.5)</td>
+</tr>
+<tr>
+<td>$connection</td>
+<td>TCP连接的序列号 (1.3.8, 1.2.5)</td>
+</tr>
+<tr>
+<td>$connection_requests</td>
+<td>TCP连接当前的请求数量 (1.3.8, 1.2.5)</td>
+</tr>
+<tr>
+<td>$content_length</td>
+<td>“Content-Length” 请求头字段</td>
+</tr>
+<tr>
+<td>$content_type</td>
+<td>“Content-Type” 请求头字段</td>
+</tr>
+<tr>
+<td>$cookie_name</td>
+<td>cookie名称</td>
+</tr>
+<tr>
+<td>$document_root</td>
+<td>当前请求的文档根目录或别名</td>
+</tr>
+<tr>
+<td>$document_uri</td>
+<td>同 $uri</td>
+</tr>
+<tr>
+<td>$host</td>
+<td>优先级如下：HTTP请求行的主机名&gt;”HOST”请求头字段&gt;符合请求的服务器名</td>
+</tr>
+<tr>
+<td>$hostname</td>
+<td>主机名</td>
+</tr>
+<tr>
+<td>$http_name</td>
+<td>匹配任意请求头字段； 变量名中的后半部分“name”可以替换成任意请求头字段，如在配置文件中需要获取http请求头：“Accept-Language”，那么将“－”替换为下划线，大写字母替换为小写，形如：$http_accept_language即可。</td>
+</tr>
+<tr>
+<td>$https</td>
+<td>如果开启了SSL安全模式，值为“on”，否则为空字符串。</td>
+</tr>
+<tr>
+<td>$is_args</td>
+<td>如果请求中有参数，值为“?”，否则为空字符串。</td>
+</tr>
+<tr>
+<td>$limit_rate</td>
+<td>用于设置响应的速度限制，详见 limit_rate。</td>
+</tr>
+<tr>
+<td>$msec</td>
+<td>当前的Unix时间戳 (1.3.9, 1.2.6)</td>
+</tr>
+<tr>
+<td>$nginx_version</td>
+<td>nginx版本</td>
+</tr>
+<tr>
+<td>$pid</td>
+<td>工作进程的PID</td>
+</tr>
+<tr>
+<td>$pipe</td>
+<td>如果请求来自管道通信，值为“p”，否则为“.” (1.3.12, 1.2.7)</td>
+</tr>
+<tr>
+<td>$proxy_protocol_addr</td>
+<td>获取代理访问服务器的客户端地址，如果是直接访问，该值为空字符串。(1.5.12)</td>
+</tr>
+<tr>
+<td>$proxy_protocol_port</td>
+<td>获取代理访问服务器的客户端的端口，如果是直接访问,该值为空字符串(1.11.0)。</td>
+</tr>
+<tr>
+<td>$query_string</td>
+<td>同 $args</td>
+</tr>
+<tr>
+<td>$realpath_root</td>
+<td>当前请求的文档根目录或别名的真实路径，会将所有符号连接转换为真实路径。</td>
+</tr>
+<tr>
+<td>$remote_addr</td>
+<td>客户端地址</td>
+</tr>
+<tr>
+<td>$remote_port</td>
+<td>客户端端口</td>
+</tr>
+<tr>
+<td>$remote_user</td>
+<td>用于HTTP基础认证服务的用户名</td>
+</tr>
+<tr>
+<td>$request</td>
+<td>代表客户端的请求地址</td>
+</tr>
+<tr>
+<td>$request_body</td>
+<td>客户端的请求主体,此变量可在location中使用，将请求主体通过proxy_pass, fastcgi_pass, uwsgi_pass, 和 scgi_pass传递给下一级的代理服务器。</td>
+</tr>
+<tr>
+<td>$request_body_file</td>
+<td>将客户端请求主体保存在临时文件中。文件处理结束后，此文件需删除。如果需要之一开启此功能，需要设置client_body_in_file_only。如果将次文件传递给后端的代理服务器，需要禁用request body，即设置proxy_pass_request_body off，fastcgi_pass_request_body off, uwsgi_pass_request_body off, or scgi_pass_request_body off 。</td>
+</tr>
+<tr>
+<td>$request_completion</td>
+<td>如果请求成功，值为”OK”，如果请求未完成或者请求不是一个范围请求的最后一部分，则为空。</td>
+</tr>
+<tr>
+<td>$request_filename</td>
+<td>当前连接请求的文件路径，由root或alias指令与URI请求生成。</td>
+</tr>
+<tr>
+<td>$request_id</td>
+<td>16随机字节(十六进制)生成的唯一请求标识符(1.11.0)</td>
+</tr>
+<tr>
+<td>$request_length</td>
+<td>请求的长度 (包括请求的地址, http请求头和请求主体) (1.3.12, 1.2.7)</td>
+</tr>
+<tr>
+<td>$request_method</td>
+<td>HTTP请求方法，通常为“GET”或“POST”</td>
+</tr>
+<tr>
+<td>$request_time</td>
+<td>处理客户端请求使用的时间 (1.3.9, 1.2.6); 从读取客户端的第一个字节开始计时。</td>
+</tr>
+<tr>
+<td>$request_uri</td>
+<td>这个变量等于包含一些客户端请求参数的原始URI，它无法修改，请查看$uri更改或重写URI，不包含主机名，例如：”&#x2F;cnphp&#x2F;test.php?arg&#x3D;freemouse”。</td>
+</tr>
+<tr>
+<td>$scheme</td>
+<td>请求使用的Web协议, “http” 或 “https”</td>
+</tr>
+<tr>
+<td>$sent_http_name</td>
+<td>可以设置任意http响应头字段； 变量名中的后半部分“name”可以替换成任意响应头字段，如需要设置响应头Content-length，那么将“－”替换为下划线，大写字母替换为小写，形如：$sent_http_content_length 4096即可。</td>
+</tr>
+<tr>
+<td>$server_addr</td>
+<td>服务器端地址，需要注意的是：为了避免访问linux系统内核，应将ip地址提前设置在配置文件中。</td>
+</tr>
+<tr>
+<td>$server_name</td>
+<td>服务器名，<a target="_blank" rel="noopener" href="http://www.nginx.org/">www.nginx.org</a></td>
+</tr>
+<tr>
+<td>$server_port</td>
+<td>port of the server which accepted a request</td>
+</tr>
+<tr>
+<td>$server_protocol</td>
+<td>服务器的HTTP版本, 通常为 “HTTP&#x2F;1.0” 或 “HTTP&#x2F;1.1” , “HTTP&#x2F;2.0”</td>
+</tr>
+<tr>
+<td>$status</td>
+<td>HTTP响应代码 (1.3.2, 1.2.2)</td>
+</tr>
+<tr>
+<td>$tcpinfo_rtt、$tcpinfo_rttvar、$tcpinfo_snd_cwnd、$tcpinfo_rcv_space</td>
+<td>客户端TCP连接的具体信息</td>
+</tr>
+<tr>
+<td>$time_iso8601</td>
+<td>服务器时间的ISO 8610格式 (1.3.12, 1.2.7)</td>
+</tr>
+<tr>
+<td>$time_local</td>
+<td>服务器时间（LOG Format 格式） (1.3.12, 1.2.7)</td>
+</tr>
+<tr>
+<td>$uri</td>
+<td>请求中的当前URI(不带请求参数，参数位于$args)，可以不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改，$uri不包含主机名，如”&#x2F;foo&#x2F;bar.html”。</td>
+</tr>
+</tbody></table>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>nginx if 不允许嵌套，变量与括号之间都需要有空格，否则nginx认为是一条命令</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>比较运算符,并非 “&#x3D;&#x3D;”</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>or</td>
+<td>逻辑或</td>
+</tr>
+</tbody></table>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>nginx 将每个功能都分成不同的模块加载，具有很强的扩展性，与php的ext一样。<br>下面列出的都是常用到的模块和内置的模块</p>
+<table>
+<thead>
+<tr>
+<th>模块名</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ngx_http_core_module</td>
+<td>nginx核心模块,例如location, error_page和内置变量等等</td>
+</tr>
+<tr>
+<td>ngx_http_access_module</td>
+<td>允许&#x2F;限制客户端的访问</td>
+</tr>
+<tr>
+<td>ngx_http_fastcgi_module</td>
+<td>这个不多说，如果你是PHP程序员一定知道</td>
+</tr>
+<tr>
+<td>ngx_http_grpc_module</td>
+<td>将请求发送到grpc服务器</td>
+</tr>
+<tr>
+<td>ngx_http_gzip_module</td>
+<td>压缩技术</td>
+</tr>
+<tr>
+<td>ngx_http_proxy_module</td>
+<td>反向代理的模块</td>
+</tr>
+<tr>
+<td>ngx_http_log_module</td>
+<td>日志的模块</td>
+</tr>
+<tr>
+<td>ngx_http_rewrite_module</td>
+<td>重写的模块</td>
+</tr>
+<tr>
+<td>ngx_http_ssl_module</td>
+<td>配置https的模块</td>
+</tr>
+</tbody></table>
+<h1 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h1><p>nginx支持以下命令行参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-? -h</td>
+<td>打开帮助信息</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>使用指定配置文件启动nginx.</td>
+</tr>
+<tr>
+<td>-g directives</td>
+<td>设置配置文件外的全局指令</td>
+</tr>
+<tr>
+<td>-p prefix</td>
+<td>设置前缀路径（默认是：&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;nginx）</td>
+</tr>
+<tr>
+<td>-q suppress</td>
+<td>在检测配置文件期间屏蔽非错误信息</td>
+</tr>
+<tr>
+<td>-s signal</td>
+<td>给一个 nginx 主进程发送信号：stop（停止）, quit（退出）, reopen（重启）, reload（重新加载配置文件）</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>立刻停止nginx运行</td>
+</tr>
+<tr>
+<td>quit</td>
+<td>优雅的关闭nginx</td>
+</tr>
+<tr>
+<td>reload</td>
+<td>重启</td>
+</tr>
+<tr>
+<td>reopen</td>
+<td>打开日志文件</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>检测配置文件是否有语法错误，然后退出</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>与-t相同</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示版本信息并退出</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>显示版本和配置选项信息，然后退出</td>
+</tr>
+</tbody></table>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="配置SSL"><a href="#配置SSL" class="headerlink" title="配置SSL"></a>配置SSL</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name nginx.org;</span><br><span class="line">    ssl on;</span><br><span class="line">    root /var/www/nginx.org;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">    ssl_certificate  cert/nginx.pem;</span><br><span class="line">    ssl_certificate_key cert/nginx.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name  www.baidu.cim;</span><br><span class="line"> </span><br><span class="line">    access_log  logs/nginx.access.log  main;</span><br><span class="line">    error_log  logs/nginx.error.log;</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass  http://nginx.org;</span><br><span class="line"> </span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host             $host;</span><br><span class="line">        proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;</span><br><span class="line">        proxy_max_temp_file_size 0;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置负载均衡"><a href="#配置负载均衡" class="headerlink" title="配置负载均衡"></a>配置负载均衡</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">upstream server &#123;  </span><br><span class="line">    server 127.0.0.1:8080 weight=3;  </span><br><span class="line">    server 127.1.1.1:8081;  </span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name  www.baidu.cim;</span><br><span class="line"> </span><br><span class="line">    access_log  logs/nginx.access.log  main;</span><br><span class="line">    error_log  logs/nginx.error.log;</span><br><span class="line">    root   html;</span><br><span class="line">    index  index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass  http://server;</span><br><span class="line"> </span><br><span class="line">        proxy_redirect     off;</span><br><span class="line">        proxy_set_header   Host             $host;</span><br><span class="line">        proxy_set_header   X-Real-IP        $remote_addr;</span><br><span class="line">        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;</span><br><span class="line">        proxy_max_temp_file_size 0;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢你看到这里，我们不是代码的搬运工，要理解其内在也是一名优秀的程序员。有什么疑问可以在评论区留言，谢谢 🙏</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">CrazyCodes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/Nginx/NGINX%E5%AE%8F%E8%A7%82%E6%89%8B%E8%AE%B0/">http://example.com/2022/06/25/Nginx/NGINX%E5%AE%8F%E8%A7%82%E6%89%8B%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">CrazyCodes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/25/Nginx/GitLab%E6%90%AD%E5%BB%BA%E5%B9%B6%E6%8E%A5%E5%85%A5%E8%87%AA%E5%BB%BANginx/"><img class="prev-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2022/06/25/Nginx/%E5%AE%89%E8%A3%85Nginx%E8%A6%81%E4%BB%8E%E5%A8%83%E5%A8%83%E6%8A%93%E8%B5%B7/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CrazyCodes</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">4.</span> <span class="toc-text">模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-number">5.</span> <span class="toc-text">命令行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">6.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSL"><span class="toc-number">6.1.</span> <span class="toc-text">配置SSL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">配置反向代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">6.3.</span> <span class="toc-text">配置负载均衡</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%B4%E8%B0%A2"><span class="toc-number">7.</span> <span class="toc-text">致谢</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By CrazyCodes</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

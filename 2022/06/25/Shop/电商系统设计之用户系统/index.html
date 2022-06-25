@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CrazyCodes | CrazyCodes</title><meta name="author" content="CrazyCodes"><meta name="copyright" content="CrazyCodes"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="电商大伙每天都在用，类似某猫，某狗等。电商系统设计看似复杂又很简单，看似简单又很复杂本章适合初级工程师及中级工程师细看，大佬请随意  前言设计以以下为工具讲起  PHP为开发语言 基于Laravel框架 MySQL为数据存储  电商的可变性与孩子的心情一样，变化极快，所以在设计之处就要想好大部分的功能接入及开发，尽量减少重构次数。对老板来说节约成本，对程序员来说“珍惜生命” 数据表前期业务简单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrazyCodes">
+<meta property="og:url" content="http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="CrazyCodes">
+<meta property="og:description" content="电商大伙每天都在用，类似某猫，某狗等。电商系统设计看似复杂又很简单，看似简单又很复杂本章适合初级工程师及中级工程师细看，大佬请随意  前言设计以以下为工具讲起  PHP为开发语言 基于Laravel框架 MySQL为数据存储  电商的可变性与孩子的心情一样，变化极快，所以在设计之处就要想好大部分的功能接入及开发，尽量减少重构次数。对老板来说节约成本，对程序员来说“珍惜生命” 数据表前期业务简单">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg">
+<meta property="article:published_time" content="2022-06-25T14:20:51.556Z">
+<meta property="article:modified_time" content="2022-06-25T14:20:51.556Z">
+<meta property="article:author" content="CrazyCodes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg"><link rel="shortcut icon" href="https://resources.blog.fastrun.cn/wp-content/uploads/2020/05/2020050605523531.png"><link rel="canonical" href="http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CrazyCodes',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-25 22:20:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CrazyCodes</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/%E5%88%86%E7%B1%BB/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-25T14:20:51.556Z" title="更新于 2022-06-25 22:20:51">2022-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/07/3459999803-5b232b2aa59fc_articlex.jpeg"></p>
+<blockquote>
+<p>电商大伙每天都在用，类似某猫，某狗等。<br>电商系统设计看似复杂又很简单，看似简单又很复杂<br>本章适合初级工程师及中级工程师细看，大佬请随意</p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>设计以以下为工具讲起</p>
+<ul>
+<li>PHP为开发语言</li>
+<li>基于Laravel框架</li>
+<li>MySQL为数据存储</li>
+</ul>
+<p>电商的可变性与孩子的心情一样，变化极快，所以在设计之处就要想好大部分的功能接入及开发，尽量减少重构次数。对老板来说节约成本，对程序员来说“珍惜生命”</p>
+<h1 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h1><p>前期业务简单时，我们可以将数据表设计为下列的样子</p>
+<table>
+<thead>
+<tr>
+<th align="left">TableName</th>
+<th align="left">Comments</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">member</td>
+<td align="left">用户表</td>
+</tr>
+<tr>
+<td align="left">member_address</td>
+<td align="left">收货地址表</td>
+</tr>
+<tr>
+<td align="left">member_card</td>
+<td align="left">银行卡表</td>
+</tr>
+<tr>
+<td align="left">member_cart</td>
+<td align="left">购物车表</td>
+</tr>
+<tr>
+<td align="left">member_cart_item</td>
+<td align="left">购物车商品表</td>
+</tr>
+<tr>
+<td align="left">member_collect_product</td>
+<td align="left">商品收藏表</td>
+</tr>
+<tr>
+<td align="left">member_collect_supplier</td>
+<td align="left">店铺收藏表</td>
+</tr>
+<tr>
+<td align="left">member_data</td>
+<td align="left">用户信息表</td>
+</tr>
+<tr>
+<td align="left">member_query_history</td>
+<td align="left">用户搜索历史表</td>
+</tr>
+<tr>
+<td align="left">member_wallet</td>
+<td align="left">用户账户表</td>
+</tr>
+<tr>
+<td align="left">member_withdrawal</td>
+<td align="left">用户提现表</td>
+</tr>
+</tbody></table>
+<h2 id="用户表"><a href="#用户表" class="headerlink" title="用户表"></a>用户表</h2><p>考虑到多种登录方式，应在数据表中涉及到微信的openid,unionid,支付宝、QQ的用户token等，这些要在前期就涉及进去，因后期用户量大了之后加一个字段简直是噩梦,用户状态status也必不可少，比较人也是分好坏，其次就是创建时间，登录时间等，用户表与用户信息表绝逼是绑定关系，这就不多言了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `member` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `tel` bigint(20) DEFAULT NULL COMMENT &#x27;手机号码&#x27;,</span><br><span class="line">  `password` varchar(555) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT &#x27;登录密码&#x27;,</span><br><span class="line">  `wx_token` varchar(125) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT &#x27;微信TOKEN&#x27;,</span><br><span class="line">  `im_token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;用户融云token&#x27;,</span><br><span class="line">  `open_id` varchar(125) COLLATE utf8mb4_unicode_ci DEFAULT NULL,</span><br><span class="line">  `status` enum(&#x27;1&#x27;,&#x27;-1&#x27;) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT &#x27;1&#x27; COMMENT &#x27;账号状态&#x27;,</span><br><span class="line">  `created_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `updated_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  UNIQUE KEY `member_tel_unique` (`tel`),</span><br><span class="line">  UNIQUE KEY `member_wx_token_unique` (`wx_token`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/07/3334194934-5b228c8a611cd_articlex.png"></p>
+<h2 id="收货地址表"><a href="#收货地址表" class="headerlink" title="收货地址表"></a>收货地址表</h2><p>收货地址与用户是一一相对的，在设计上增加需要的字段即可，例如 收货人、收货人手机号、城市、详细地址等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `member_address` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `member_id` int(11) NOT NULL COMMENT &#x27;用户编号&#x27;,</span><br><span class="line">  `nick_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;收货人姓名&#x27;,</span><br><span class="line">  `tel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;手机号码&#x27;,</span><br><span class="line">  `prov` int(11) DEFAULT NULL COMMENT &#x27;省&#x27;,</span><br><span class="line">  `city` int(11) NOT NULL COMMENT &#x27;市&#x27;,</span><br><span class="line">  `area` int(11) DEFAULT NULL COMMENT &#x27;区&#x27;,</span><br><span class="line">  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT &#x27;&#x27; COMMENT &#x27;街道地址&#x27;,</span><br><span class="line">  `number` int(11) NOT NULL COMMENT &#x27;邮政编码&#x27;,</span><br><span class="line">  `default` enum(&#x27;0&#x27;,&#x27;1&#x27;) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT &#x27;0&#x27; COMMENT &#x27;默认收货地址 1=&gt;默认&#x27;,</span><br><span class="line">  `deleted_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `created_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `updated_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/07/815627702-5b228d261e2a3_articlex.png"></p>
+<h2 id="银行卡表"><a href="#银行卡表" class="headerlink" title="银行卡表"></a>银行卡表</h2><p>用于用户提现的业务等，大致将银行卡所需的信息记录即可，例如持卡人、卡号、归属银行等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `member_card` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `member_id` int(11) NOT NULL COMMENT &#x27;用户编码&#x27;,</span><br><span class="line">  `card_name` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;持卡人姓名&#x27;,</span><br><span class="line">  `card_number` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;银行卡号&#x27;,</span><br><span class="line">  `created_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `updated_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  UNIQUE KEY `member_card_card_number_unique` (`card_number`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.fastrun.cn/wp-content/uploads/2018/07/2566994358-5b228d791c044_articlex.png"></p>
+<h2 id="购物车表"><a href="#购物车表" class="headerlink" title="购物车表"></a>购物车表</h2><p>为何单独建这个表，也是又一定原因的，正常只需要member_cart_item表即可，根据实际下线的业务场景，正常购物到超市需要拿一个购物车，但这个购物车并非属于你，你使用之后，需要归还，他人可继续使用，将购物车公开化，并不是将购物车商品公开化。业务场景比较窄，例如京东到家和京东商城一样（我只是举例，并不清楚他们怎么做的），购物车不通用，那如何区分呢，是应该在购物车上区分还是在购物车商品上区分？我想你已经清楚了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `member_cart` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `member_id` int(11) NOT NULL COMMENT &#x27;用户编码&#x27;,</span><br><span class="line">  `created_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `updated_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  UNIQUE KEY `member_cart_member_id_unique` (`member_id`),</span><br><span class="line">  KEY `member_cart_member_id_index` (`member_id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<h2 id="购物车商品表"><a href="#购物车商品表" class="headerlink" title="购物车商品表"></a>购物车商品表</h2><p>这块需要提的一点是 [并不是所有表的设计都是互相绑定,互相依赖的]，就例如购物车商品表，不仅仅将商品编码存储在内，还要将商品价格，商品的简介以及商品的规格(既SKU)存储，不能因卖家下架商品，而查询不到商品的存在，比较一切以用户为主，用户是上帝的原则，不能让商品悄悄的就消失了吧。所以在做购物车商品表查询时，切记不要使用join或者表关联查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `member_cart_item` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `cart_id` int(11) NOT NULL COMMENT &#x27;购物车编码&#x27;,</span><br><span class="line">  `product_desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;商品sku信息&#x27;,</span><br><span class="line">  `product_img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;商品快照&#x27;,</span><br><span class="line">  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;商品名称&#x27;,</span><br><span class="line">  `price` decimal(8,2) NOT NULL DEFAULT &#x27;0.00&#x27; COMMENT &#x27;价格&#x27;,</span><br><span class="line">  `product_id` int(11) NOT NULL COMMENT &#x27;商品编码&#x27;,</span><br><span class="line">  `supplier_id` int(11) NOT NULL COMMENT &#x27;店铺编码&#x27;,</span><br><span class="line">  `sku_id` int(11) NOT NULL COMMENT &#x27;商品sku编码&#x27;,</span><br><span class="line">  `number` int(11) NOT NULL DEFAULT &#x27;1&#x27; COMMENT &#x27;商品数量&#x27;,</span><br><span class="line">  `created_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `updated_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`),</span><br><span class="line">  KEY `member_cart_item_cart_id_product_id_supplier_id_index` (`cart_id`,`product_id`,`supplier_id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<h2 id="用户搜索历史表"><a href="#用户搜索历史表" class="headerlink" title="用户搜索历史表"></a>用户搜索历史表</h2><p>用户搜索的记录是一定要有的，为了未来的数据分析，智能推荐做准备，毕竟现在是信息共享的时代嘛～</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `member_query_history` (</span><br><span class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `member_id` int(11) NOT NULL COMMENT &#x27;用户编码&#x27;,</span><br><span class="line">  `keyword` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT &#x27;关键字&#x27;,</span><br><span class="line">  `created_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  `updated_at` timestamp NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</span><br></pre></td></tr></table></figure>
+<h1 id="数据记录"><a href="#数据记录" class="headerlink" title="数据记录"></a>数据记录</h1><p>有很多场景，都要将标题呀，内容呀直接存储，类似与收藏的店铺和商品，无论卖家怎么做，用户购物车，订单不能动，这是基准。</p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢你们看到这里，下一篇我会讲一下关于电商系统的商品设计的部分。有什么问题可以评论区提问。谢谢</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">CrazyCodes</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/">http://example.com/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">CrazyCodes</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/"><img class="next-cover" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatar-static.segmentfault.com/177/158/177158972-603b0838da516_huge256" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CrazyCodes</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">2.</span> <span class="toc-text">数据表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">用户表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B6%E8%B4%A7%E5%9C%B0%E5%9D%80%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">收货地址表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%8D%A1%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text">银行卡表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E8%A1%A8"><span class="toc-number">2.4.</span> <span class="toc-text">购物车表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%95%86%E5%93%81%E8%A1%A8"><span class="toc-number">2.5.</span> <span class="toc-text">购物车商品表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%90%9C%E7%B4%A2%E5%8E%86%E5%8F%B2%E8%A1%A8"><span class="toc-number">2.6.</span> <span class="toc-text">用户搜索历史表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95"><span class="toc-number">3.</span> <span class="toc-text">数据记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%B4%E8%B0%A2"><span class="toc-number">4.</span> <span class="toc-text">致谢</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%94%A8%E6%88%B7%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E9%80%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E4%BC%98%E6%83%A0%E5%8D%B7/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.556Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%8B)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2022/06/25/Shop/%E7%94%B5%E5%95%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%95%86%E5%93%81%20(%E4%B8%AD)/" title="无题">无题</a><time datetime="2022-06-25T14:20:51.555Z" title="发表于 2022-06-25 22:20:51">2022-06-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By CrazyCodes</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
